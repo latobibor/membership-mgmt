@@ -3,14 +3,10 @@ import { EditorRow } from '../access-manager-layout/editor-row';
 import { SelectAccessLevel } from './select-access-level';
 import { Role } from '../../clients/save-access-list';
 import { SelectRole } from './select-role';
+import { SelectMember } from './select-member';
+import { members } from '../../clients/mock-data';
 
-interface MemberSettingsProps {
-  id: string;
-  firstname: string;
-  lastname: string;
-}
-
-export function MemberSettings({ firstname, lastname }: MemberSettingsProps) {
+export function MemberSettings() {
   const [selectedRole, selectRole] = useState<Role>(Role.Employee);
 
   // in simpler cases we don't need to use redux
@@ -20,7 +16,7 @@ export function MemberSettings({ firstname, lastname }: MemberSettingsProps) {
 
   return (
     <EditorRow>
-      <div className="col-sm p-4">{`${firstname} ${lastname}`}</div>
+      <div className="col-sm p-4"><SelectMember onChange={console.log} availableMembers={members} /></div>
       <div className="col-sm p-4">
         <SelectRole onChange={onRoleChange} />
       </div>

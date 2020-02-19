@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MemberSettings } from '../member-settings/member-settings';
-import { getMembersList } from '../../clients/get-members-list';
 import { Member } from '../../clients/mock-data';
 
-export function AccessManagerBody() {
-  const [members, setMembers] = useState<Member[]>([]);
+interface AccessManagerBodyProps {
+  members: Member[];
+}
 
-  useEffect(() => {
-    async function downloadMembersList() {
-      try {
-        const membersFromApi = await getMembersList();
-        setMembers(membersFromApi);
-      } catch (error) {
-        // TODO: global error handling
-        console.error(error);
-      }
-    }
-
-    downloadMembersList();
-  });
-
+export function AccessManagerBody({ members }: AccessManagerBodyProps) {
   return (
     <>
-      {members.map(({ person_id, firstname, lastname }) => (
-        <MemberSettings key={person_id} id={person_id} firstname={firstname} lastname={lastname} />
+      {members.map(({ person_id }) => (
+        <MemberSettings key={person_id} />
       ))}
     </>
   );
