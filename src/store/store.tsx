@@ -7,6 +7,7 @@ export interface MemberInEditMode {
 
 export interface GlobalState {
   membersInEditMode: MemberInEditMode[];
+  changesToBeSaved: boolean;
 }
 
 export interface Action {
@@ -16,6 +17,7 @@ export interface Action {
 
 export const initialState: GlobalState = {
   membersInEditMode: [],
+  changesToBeSaved: false,
 };
 
 export interface StoreContext {

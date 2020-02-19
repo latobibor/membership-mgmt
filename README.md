@@ -33,3 +33,12 @@ product manager/designer.
 
 ### API
 * the API endpoint that returns the list of users is missing current access level of employees; therefore I could not populate access level dropdown with the existing values; if the administrator of the organization is curious about current settings this would raise an issue
+
+## Corners cut
+
+### Features
+Since I'm travelling on Thursday I did not have time for all the features discussed in the memo. So here's a list of what needs to be done and what I think about doing them.
+
+#### Add new member
+If I had the time I would have asked how the "New Member" button would work since in the memo there is only a list of members result listed 
+and a list of changes which need references to existing members (`person_id`). Therefore I would have liked to know what is the accepted payload for adding new members.

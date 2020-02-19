@@ -1,48 +1,43 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { saveAccessChanges, AccessChange } from '../../clients/save-access-list';
-
-interface CreationButtonsProps {
-  changes: AccessChange[];
-}
+import { StoreContext, Store } from '../../store/store';
+import { Actions } from '../../store/reducers';
 
 function newButtonClick() {
-  console.log('new button');
+  console.log('SEE Readme.md ABOUT CORNERS BEING CUT');
 }
 
-export class CreationButtons extends React.PureComponent<CreationButtonsProps> {
-  constructor(props: CreationButtonsProps) {
-    super(props);
+export function CreationButtons() {
+  const { state, dispatch } = useContext<StoreContext>(Store);
+  const { changesToBeSaved } = state;
 
-    this.saveChanges = this.saveChanges.bind(this);
-  }
+  const changesAreSaved = () => dispatch({ type: Actions.ChangesAreSaved, payload: null });
 
-  async saveChanges() {
-    const { changes } = this.props;
+  async function saveChanges() {
+    const changes: AccessChange[] = [];
 
     try {
       await saveAccessChanges(changes);
-      // send success event, empty
+      changesAreSaved();
     } catch (error) {
       console.error(error);
-      // send redux error
+      // TODO: dispatch and pop up some friendly error message
     }
   }
 
-  render() {
-    const areChangesSaved = this.props.changes.length === 0;
 
-    return (
-      <>
-        <button type="button" className="px-4 btn btn-light border-secondary" onClick={newButtonClick}>
-          New Member
+
+  return (
+    <>
+      <button type="button" className="px-4 btn btn-light border-secondary" onClick={newButtonClick}>
+        New Member
+      </button>
+
+      {changesToBeSaved && (
+        <button type="button" className="px-4 ml-4 btn btn-info" onClick={saveChanges}>
+          Save Changes
         </button>
-
-        {!areChangesSaved && (
-          <button type="button" className="px-4 ml-4 btn btn-info" onClick={this.saveChanges}>
-            Save Changes
-          </button>
-        )}
-      </>
-    );
-  }
+      )}
+    </>
+  );
 }
