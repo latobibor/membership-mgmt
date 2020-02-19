@@ -1,4 +1,6 @@
 import React from 'react';
+import { AccessEditor } from './access-editor';
+import { AccessManagerNewMemberButton } from './access-manager-new-member-button';
 
 interface Member {
   person_id: string;
@@ -54,18 +56,11 @@ const members: Member[] = [
 
 export function AccessManagerBody() {
   return (
-    <tbody>
-      {members.map(member => 
-        <tr key={member.person_id} className="bg-white">
-          <td>{`${member.firstname} ${member.lastname}`}</td>
-          <td>Role</td>
-          <td>X</td>
-          <td>X</td>
-        </tr>
-      )}
-      <tr className="bg-white">
-          <td><button type="button" className="btn btn-link">Add new member</button></td>
-      </tr>
-    </tbody>
+    <>
+      {members.map(({ person_id, firstname, lastname }) => (
+        <AccessEditor key={person_id} id={person_id} firstname={firstname} lastname={lastname} />
+      ))}
+      <AccessManagerNewMemberButton />
+    </>
   );
 }

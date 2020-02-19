@@ -4,11 +4,9 @@ import { AccessManagerBody } from './access-manager-body';
 
 export function AccessManagerContainer() {
   return (
-    <div className="m-5">
-      <table className="table table-responsive-md">
-          <AccessManagerHeader />
-          <AccessManagerBody />
-      </table>
+    <div className="m-sm-2 m-md-5">
+      <AccessManagerHeader />
+      <AccessManagerBody />
     </div>
   );
 }
