@@ -1,7 +1,8 @@
 import React, { createContext, useReducer, Dispatch } from 'react';
 import { Actions } from './reducers';
+import { AccessChange } from '../clients/save-access-list';
 
-export interface MemberInEditMode {
+export interface MemberInEditMode extends Partial<AccessChange> {
   index: number;
 }
 

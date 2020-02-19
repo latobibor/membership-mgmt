@@ -15,15 +15,12 @@ const options: AccessLevelSelectOption[] = [
   { value: AccessLevel.Read, label: 'Read' },
 ];
 
-function onChange(selectedOption: any) {
-  console.log(selectedOption);
-}
-
 interface SelectAccessLevelProps {
-  roleOfCurrentUser: Role;
+  roleOfCurrentUser?: Role;
+  onChange: (selectedOption: any) => void;
 }
 
-function filterAccessLevelsBy(role: Role) {
+function filterAccessLevelsBy(role?: Role) {
   switch (role) {
     case Role.Manager:
       return options.filter(option => option.value === AccessLevel.Admin);
@@ -31,10 +28,12 @@ function filterAccessLevelsBy(role: Role) {
       return options.filter(option => option.value === AccessLevel.Write || option.value === AccessLevel.Admin);
     case Role.Customer:
       return options.filter(option => option.value === AccessLevel.Write || option.value === AccessLevel.Read);
+    default:
+      return [];
   }
 }
 
-export function SelectAccessLevel({ roleOfCurrentUser }: SelectAccessLevelProps) {
+export function SelectAccessLevel({ roleOfCurrentUser, onChange }: SelectAccessLevelProps) {
   const filteredOptions = filterAccessLevelsBy(roleOfCurrentUser);
 
   return roleOfCurrentUser === Role.Manager ? (

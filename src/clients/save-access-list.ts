@@ -25,11 +25,13 @@ export enum AccessLevel {
 export async function saveAccessChanges(changes: AccessChange[]): Promise<void> {
   const saveEndpoint = 'https://wqp-backend.api/access-manager/members/access-levels';
 
+  const body: MemberAccessChangePayload = {
+    members: changes,
+  };
+
   const response = await fetch(saveEndpoint, {
     method: 'POST',
-    body: {
-      members: changes,
-    },
+    body,
   });
 
   if (!response.ok) {

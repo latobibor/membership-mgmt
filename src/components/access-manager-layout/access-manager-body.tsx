@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { MemberSettings } from '../member-settings/member-settings';
+import { MemberSettingsEditor } from '../member-settings/member-settings-editor';
 import { Store, StoreContext } from '../../store/store';
 
 export function AccessManagerBody() {
@@ -10,7 +10,7 @@ export function AccessManagerBody() {
   return (
     <>
       {membersInEditMode.map(({ index }) => (
-        <MemberSettings key={`${index}`} index={index} />
+        <MemberSettingsEditor key={`${index}`} index={index} />
       ))}
     </>
   );

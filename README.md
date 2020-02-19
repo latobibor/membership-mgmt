@@ -42,3 +42,14 @@ Since I'm travelling on Thursday I did not have time for all the features discus
 #### Add new member
 If I had the time I would have asked how the "New Member" button would work since in the memo there is only a list of members result listed 
 and a list of changes which need references to existing members (`person_id`). Therefore I would have liked to know what is the accepted payload for adding new members.
+
+#### Save changes button should disappear if the last changed item is closed without saving
+
+#### Progressively enable controls in a row - let people save changes only when all conditions met for it
+1. So first the user must select a name.
+1. Then the role
+1. Then access level (or in case of Manager already preselected)
+1. Then send notification there is something to change
+
+For example this is not so hard, but can be a bit tricky if I need to preselect `Admin` access level for `Manager`s
+

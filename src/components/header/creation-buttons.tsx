@@ -9,23 +9,27 @@ function newButtonClick() {
 
 export function CreationButtons() {
   const { state, dispatch } = useContext<StoreContext>(Store);
-  const { changesToBeSaved } = state;
+  const { changesToBeSaved, membersInEditMode } = state;
 
   const changesAreSaved = () => dispatch({ type: Actions.ChangesAreSaved, payload: null });
 
   async function saveChanges() {
-    const changes: AccessChange[] = [];
+    const changes: Partial<AccessChange>[] = membersInEditMode.map(({person_id, role, access_level}) => ({
+      person_id, 
+      role,
+      access_level,
+    }));
+
+    const validChanges = changes.filter(change => change.person_id && change.role && change.access_level) as AccessChange[];
 
     try {
-      await saveAccessChanges(changes);
+      await saveAccessChanges(validChanges);
       changesAreSaved();
     } catch (error) {
       console.error(error);
       // TODO: dispatch and pop up some friendly error message
     }
   }
-
-
 
   return (
     <>

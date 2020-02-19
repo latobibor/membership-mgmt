@@ -23,7 +23,9 @@ class MockResponseClass implements MockResponse {
 }
 
 export function fetch(url: string, options?: MockFetchOptions): Promise<MockResponse> {
-  console.log(`API endpoint ${url} was called with ${JSON.stringify(options)}`);
+  const infoAboutOptions = options ? ` with ${JSON.stringify(options)}` : '';
+
+  console.log(`API endpoint ${url} was called${infoAboutOptions}`);
 
   return Promise.resolve(new MockResponseClass(true, 200, 'Everything was fine'));
 }
