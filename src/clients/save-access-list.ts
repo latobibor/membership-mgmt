@@ -4,7 +4,7 @@ interface MemberAccessChangePayload {
   members: AccessChange[];
 }
 
-interface AccessChange {
+export interface AccessChange {
   person_id: string;
   role: Role;
   access_level: AccessLevel;
@@ -22,7 +22,7 @@ export enum AccessLevel {
   Admin = 'admin',
 }
 
-export async function saveAccessChanges(changes: AccessChange): Promise<void> {
+export async function saveAccessChanges(changes: AccessChange[]): Promise<void> {
   const saveEndpoint = 'https://wqp-backend.api/access-manager';
 
   const response = await fetch(saveEndpoint, {

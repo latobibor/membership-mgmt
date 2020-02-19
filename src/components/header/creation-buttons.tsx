@@ -1,31 +1,48 @@
 import React from 'react';
-import { saveAccessChanges } from '../../clients/save-access-list';
+import { saveAccessChanges, AccessChange } from '../../clients/save-access-list';
 
 interface CreationButtonsProps {
-  areChangesSaved: boolean;
+  changes: AccessChange[];
 }
 
 function newButtonClick() {
   console.log('new button');
 }
 
-function saveChanges() {
-  console.log('save changes');
-  // saveAccessChanges()
-}
+export class CreationButtons extends React.PureComponent<CreationButtonsProps> {
+  constructor(props: CreationButtonsProps) {
+    super(props);
 
-export function CreationButtons({ areChangesSaved }: CreationButtonsProps) {
-  return (
-    <>
-      <button type="button" className="px-4 btn btn-light border-secondary" onClick={newButtonClick}>
-        New Member
-      </button>
+    this.saveChanges = this.saveChanges.bind(this);
+  }
 
-      {!areChangesSaved && (
-        <button type="button" className="px-4 ml-4 btn btn-info" onClick={saveChanges}>
-          Save Changes
+  async saveChanges() {
+    const { changes } = this.props;
+
+    try {
+      await saveAccessChanges(changes);
+      // send success event, empty
+    } catch (error) {
+      console.error(error);
+      // send redux error
+    }
+  }
+
+  render() {
+    const areChangesSaved = this.props.changes.length === 0;
+
+    return (
+      <>
+        <button type="button" className="px-4 btn btn-light border-secondary" onClick={newButtonClick}>
+          New Member
         </button>
-      )}
-    </>
-  );
+
+        {!areChangesSaved && (
+          <button type="button" className="px-4 ml-4 btn btn-info" onClick={this.saveChanges}>
+            Save Changes
+          </button>
+        )}
+      </>
+    );
+  }
 }

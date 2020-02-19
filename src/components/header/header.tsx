@@ -1,5 +1,6 @@
 import React from 'react';
 import { CreationButtons } from './creation-buttons';
+import { AccessLevel, Role } from '../../clients/save-access-list';
 
 export function Header() {
   return (
@@ -16,7 +17,11 @@ export function Header() {
           </a>
         </li>
         <li className="nav-item">
-          <CreationButtons areChangesSaved={false} />
+          <CreationButtons changes={[{
+            person_id: '123',
+            access_level: AccessLevel.Read,
+            role: Role.Manager,
+          }]} />
         </li>
       </ul>
     </div>
