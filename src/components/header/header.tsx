@@ -1,8 +1,5 @@
 import React from 'react';
-
-function newButtonClick() {
-  console.log('new button was clicked');
-}
+import { CreationButtons } from './creation-buttons';
 
 export function Header() {
   return (
@@ -19,10 +16,7 @@ export function Header() {
           </a>
         </li>
         <li className="nav-item">
-          <button type="button" className="px-4 btn btn-light border-secondary" onClick={newButtonClick}>
-            New Member
-          </button>
-          {/* <a className="nav-link active" href="#">New Member</a> */}
+          <CreationButtons areChangesSaved={false} />
         </li>
       </ul>
     </div>
