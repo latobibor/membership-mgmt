@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MemberSettings } from '../member-settings/member-settings';
-import { Member } from '../../clients/mock-data';
+import { Store, StoreContext } from '../../store/store';
 
-interface AccessManagerBodyProps {
-  members: Member[];
-}
+export function AccessManagerBody() {
+  const { state } = useContext<StoreContext>(Store);
 
-export function AccessManagerBody({ members }: AccessManagerBodyProps) {
+  const { membersInEditMode } = state;
+
   return (
     <>
-      {members.map(({ person_id }) => (
-        <MemberSettings key={person_id} />
+      {membersInEditMode.map(({ index }) => (
+        <MemberSettings key={`${index}`} index={index} />
       ))}
     </>
   );

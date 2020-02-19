@@ -2,13 +2,19 @@ import React from 'react';
 import './App.css';
 import { Header } from './components/header/header';
 import { AccessManagerContainer } from './components/access-manager-layout/access-manager-container';
+import { createStoreProvider, initialState } from './store/store';
+import { reducers } from './store/reducers';
+
+const StoreProvider = createStoreProvider({ initialState, reducers });
 
 function App() {
   return (
-    <div className="App container">
-      <Header />
-      <AccessManagerContainer />
-    </div>
+    <StoreProvider>
+      <div className="App container">
+        <Header />
+        <AccessManagerContainer />
+      </div>
+    </StoreProvider>
   );
 }
 

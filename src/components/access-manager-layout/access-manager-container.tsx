@@ -26,7 +26,7 @@ export function AccessManagerContainer() {
   return (
     <div className="m-sm-2 m-md-5">
       <Header />
-      <Body members={members} />
+      <Body />
       <Footer />
     </div>
   );

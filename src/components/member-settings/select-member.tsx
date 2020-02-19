@@ -8,9 +8,9 @@ interface SelectMemberProps {
 }
 
 function transformMembersToSelectOptions(members: Member[]): { label: string; value: string }[] {
-  return members.map(({firstname, lastname, person_id}: Member) => ({
+  return members.map(({ firstname, lastname, person_id }: Member) => ({
     label: `${firstname} ${lastname}`,
-    value: person_id
+    value: person_id,
   }));
 }
 
