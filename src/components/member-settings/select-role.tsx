@@ -13,10 +13,10 @@ const options: RoleSelectOption[] = [
   { value: Role.Manager, label: 'Manager' },
 ];
 
-function onChange(selectedOption: any) {
-  console.log(selectedOption);
+interface SelectRoleProps {
+  onChange: (selectedOption: any) => void;
 }
 
-export function SelectRole() {
+export function SelectRole({onChange}: SelectRoleProps) {
   return <Select options={options} onChange={onChange} />;
 }
