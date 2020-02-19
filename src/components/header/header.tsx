@@ -17,11 +17,15 @@ export function Header() {
           </a>
         </li>
         <li className="nav-item">
-          <CreationButtons changes={[{
-            person_id: '123',
-            access_level: AccessLevel.Read,
-            role: Role.Manager,
-          }]} />
+          <CreationButtons
+            changes={[
+              {
+                person_id: '123',
+                access_level: AccessLevel.Read,
+                role: Role.Manager,
+              },
+            ]}
+          />
         </li>
       </ul>
     </div>

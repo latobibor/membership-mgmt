@@ -1,13 +1,14 @@
 import React from 'react';
+import { EditorRow } from './editor-row';
 
 export function AccessManagerNewMemberButton() {
   return (
-    <div className="row bg-white border-top">
+    <EditorRow>
       <div className="col p-4">
         <button type="button" className="btn btn-link">
           + Change one more person
         </button>
       </div>
-    </div>
+    </EditorRow>
   );
 }

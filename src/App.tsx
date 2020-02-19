@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Header } from './components/header/header';
-import { AccessManagerContainer } from './components/access-manager-container';
+import { AccessManagerContainer } from './components/access-editor/access-manager-container';
 
 function App() {
   return (

@@ -1,13 +1,13 @@
 import React from 'react';
-import { AccessEditor } from './access-editor';
+import { MemberSettings } from './member-settings';
 import { AccessManagerNewMemberButton } from './access-manager-new-member-button';
-import { members } from '../clients/mock-data';
+import { members } from '../../clients/mock-data';
 
 export function AccessManagerBody() {
   return (
     <>
       {members.map(({ person_id, firstname, lastname }) => (
-        <AccessEditor key={person_id} id={person_id} firstname={firstname} lastname={lastname} />
+        <MemberSettings key={person_id} id={person_id} firstname={firstname} lastname={lastname} />
       ))}
       <AccessManagerNewMemberButton />
     </>

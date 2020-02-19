@@ -1,14 +1,15 @@
 import React from 'react';
+import { EditorRow } from './editor-row';
 
-interface AccessEditorProps {
+interface MemberSettingsProps {
   id: string;
   firstname: string;
   lastname: string;
 }
 
-export function AccessEditor({ firstname, lastname }: AccessEditorProps) {
+export function MemberSettings({ firstname, lastname }: MemberSettingsProps) {
   return (
-    <div className="row bg-white border-top">
+    <EditorRow>
       <div className="col-sm p-4">{`${firstname} ${lastname}`}</div>
       <div className="col-sm p-4">Role</div>
       <div className="col-sm p-4">Access level</div>
@@ -17,6 +18,6 @@ export function AccessEditor({ firstname, lastname }: AccessEditorProps) {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    </div>
+    </EditorRow>
   );
 }
