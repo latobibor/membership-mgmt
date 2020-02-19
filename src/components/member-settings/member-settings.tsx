@@ -2,6 +2,7 @@ import React from 'react';
 import { EditorRow } from '../access-editor/editor-row';
 import { SelectAccessLevel } from './select-access-level';
 import { Role } from '../../clients/save-access-list';
+import { SelectRole } from './select-role';
 
 interface MemberSettingsProps {
   id: string;
@@ -13,7 +14,9 @@ export function MemberSettings({ firstname, lastname }: MemberSettingsProps) {
   return (
     <EditorRow>
       <div className="col-sm p-4">{`${firstname} ${lastname}`}</div>
-      <div className="col-sm p-4">Role</div>
+      <div className="col-sm p-4">
+        <SelectRole />
+      </div>
       <div className="col-sm p-4">
         <SelectAccessLevel roleOfCurrentUser={Role.Employee} />
       </div>

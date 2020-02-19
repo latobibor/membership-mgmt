@@ -7,7 +7,7 @@ interface AccessLevelSelectOption {
   label: string;
 }
 
-const adminAccessLevelOption =  { value: AccessLevel.Admin, label: 'Admin' };
+const adminAccessLevelOption = { value: AccessLevel.Admin, label: 'Admin' };
 
 const options: AccessLevelSelectOption[] = [
   adminAccessLevelOption,
@@ -37,8 +37,9 @@ function filterAccessLevelsBy(role: Role) {
 export function SelectAccessLevel({ roleOfCurrentUser }: SelectAccessLevelProps) {
   const filteredOptions = filterAccessLevelsBy(roleOfCurrentUser);
 
-  return roleOfCurrentUser === Role.Manager ? 
-    <Select options={filteredOptions} onChange={onChange} value={adminAccessLevelOption} /> :
+  return roleOfCurrentUser === Role.Manager ? (
+    <Select options={filteredOptions} onChange={onChange} value={adminAccessLevelOption} />
+  ) : (
     <Select options={filteredOptions} onChange={onChange} />
-    ;
+  );
 }
