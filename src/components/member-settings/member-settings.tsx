@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { EditorRow } from '../access-editor/editor-row';
+import { EditorRow } from '../access-manager-layout/editor-row';
 import { SelectAccessLevel } from './select-access-level';
 import { Role } from '../../clients/save-access-list';
 import { SelectRole } from './select-role';
