@@ -17,6 +17,6 @@ interface SelectRoleProps {
   onChange: (selectedOption: any) => void;
 }
 
-export function SelectRole({onChange}: SelectRoleProps) {
+export function SelectRole({ onChange }: SelectRoleProps) {
   return <Select options={options} onChange={onChange} />;
 }
