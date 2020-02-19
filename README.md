@@ -31,4 +31,5 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 Given the short term and the lack of time, I have made several assumptions which otherwise I would have checked with the relevant 
 product manager/designer.
 
+### API
 * the API endpoint that returns the list of users is missing current access level of employees; therefore I could not populate access level dropdown with the existing values; if the administrator of the organization is curious about current settings this would raise an issue

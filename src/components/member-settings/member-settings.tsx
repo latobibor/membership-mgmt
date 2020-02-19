@@ -1,5 +1,7 @@
 import React from 'react';
-import { EditorRow } from './editor-row';
+import { EditorRow } from '../access-editor/editor-row';
+import { SelectAccessLevel } from './select-access-level';
+import { Role } from '../../clients/save-access-list';
 
 interface MemberSettingsProps {
   id: string;
@@ -12,7 +14,9 @@ export function MemberSettings({ firstname, lastname }: MemberSettingsProps) {
     <EditorRow>
       <div className="col-sm p-4">{`${firstname} ${lastname}`}</div>
       <div className="col-sm p-4">Role</div>
-      <div className="col-sm p-4">Access level</div>
+      <div className="col-sm p-4">
+        <SelectAccessLevel roleOfCurrentUser={Role.Employee} />
+      </div>
       <div className="col-sm-4 p-4 text-right">
         <button type="button" className="close text-info" aria-label="Close">
           <span aria-hidden="true">&times;</span>

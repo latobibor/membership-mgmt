@@ -1,5 +1,5 @@
 import React from 'react';
-import { MemberSettings } from './member-settings';
+import { MemberSettings } from '../member-settings/member-settings';
 import { AccessManagerNewMemberButton } from './access-manager-new-member-button';
 import { members } from '../../clients/mock-data';
 

@@ -8,4 +8,4 @@ export const EditorRow: FunctionComponent<RowProps> = ({ darkTheme, children }) 
   const theme = darkTheme ? 'bg-secondary text-white' : 'bg-white';
 
   return <div className={`row mx-0 border-top ${theme}`}>{children}</div>;
-}
+};
