@@ -53,7 +53,7 @@ export function MemberSettingsEditor({ index }: MemberSettingsProps) {
   return (
     <EditorRow>
       <div className="col-sm p-4">
-        <SelectMember onChange={onMemberChange} />
+        <SelectMember onChange={onMemberChange} selectedPersonId={selectedPersonId} />
       </div>
       <div className="col-sm p-4">
         <SelectRole onChange={onRoleChange} />
