@@ -48,6 +48,9 @@ export function MemberSettingsEditor({ index }: MemberSettingsProps) {
      dispatch({ type: Actions.ThereIsChangeToBeSaved, payload });
   }
 
+  // TODO: get members from the store and remove members selected by others
+  // needed: (membersInEditMode => person_ids + allMembers)
+
   return (
     <EditorRow>
       <div className="col-sm p-4">
