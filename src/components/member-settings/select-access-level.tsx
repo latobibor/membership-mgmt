@@ -36,5 +36,5 @@ function filterAccessLevelsBy(role?: Role) {
 export function SelectAccessLevel({ roleOfCurrentUser, onChange }: SelectAccessLevelProps) {
   const filteredOptions = filterAccessLevelsBy(roleOfCurrentUser);
 
-  return  <Select options={filteredOptions} onChange={onChange} />
+  return <Select options={filteredOptions} onChange={onChange} />;
 }

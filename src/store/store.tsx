@@ -1,12 +1,14 @@
 import React, { createContext, useReducer, Dispatch } from 'react';
 import { Actions } from './reducers';
 import { AccessChange } from '../clients/save-access-list';
+import { Member } from '../clients/mock-data';
 
 export interface MemberInEditMode extends Partial<AccessChange> {
   index: number;
 }
 
 export interface GlobalState {
+  allMembers: Member[];
   membersInEditMode: MemberInEditMode[];
   changesToBeSaved: boolean;
 }
@@ -17,6 +19,7 @@ export interface Action {
 }
 
 export const initialState: GlobalState = {
+  allMembers: [],
   membersInEditMode: [],
   changesToBeSaved: false,
 };

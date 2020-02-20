@@ -4,7 +4,6 @@ import { SelectAccessLevel } from './select-access-level';
 import { Role, AccessLevel } from '../../clients/save-access-list';
 import { SelectRole } from './select-role';
 import { SelectMember } from './select-member';
-import { members } from '../../clients/mock-data';
 import { CloseButton } from './close-button';
 import { StoreContext, Store, MemberInEditMode } from '../../store/store';
 import { Actions } from '../../store/reducers';
@@ -30,7 +29,7 @@ export function MemberSettingsEditor({ index }: MemberSettingsProps) {
   function onRoleChange({ value }: any) {
     const role = value as Role;
     selectRole(role);
-    
+
     // because role change override access levels I unset the value here to be on the safe side
     selectAccessLevel(undefined);
 
@@ -45,7 +44,7 @@ export function MemberSettingsEditor({ index }: MemberSettingsProps) {
   }
 
   function notifyAboutChanges(payload: MemberInEditMode) {
-     dispatch({ type: Actions.ThereIsChangeToBeSaved, payload });
+    dispatch({ type: Actions.ThereIsChangeToBeSaved, payload });
   }
 
   // TODO: get members from the store and remove members selected by others
@@ -54,7 +53,7 @@ export function MemberSettingsEditor({ index }: MemberSettingsProps) {
   return (
     <EditorRow>
       <div className="col-sm p-4">
-        <SelectMember onChange={onMemberChange} availableMembers={members} />
+        <SelectMember onChange={onMemberChange} />
       </div>
       <div className="col-sm p-4">
         <SelectRole onChange={onRoleChange} />

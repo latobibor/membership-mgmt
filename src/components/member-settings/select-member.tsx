@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Select from 'react-select';
 import { Member } from '../../clients/mock-data';
+import { StoreContext, Store } from '../../store/store';
 
 interface SelectMemberProps {
+  selectedPersonId?: string;
   onChange: (selectedOption: any) => void;
-  availableMembers: Member[];
 }
 
 function transformMembersToSelectOptions(members: Member[]): { label: string; value: string }[] {
@@ -14,8 +15,10 @@ function transformMembersToSelectOptions(members: Member[]): { label: string; va
   }));
 }
 
-export function SelectMember({ onChange, availableMembers }: SelectMemberProps) {
-  const options = transformMembersToSelectOptions(availableMembers);
+export function SelectMember({ onChange, selectedPersonId }: SelectMemberProps) {
+  const { state: { allMembers } } = useContext<StoreContext>(Store);
+
+  const options = transformMembersToSelectOptions(allMembers);
 
   return <Select options={options} onChange={onChange} />;
 }

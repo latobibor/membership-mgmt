@@ -2,6 +2,7 @@ import { GlobalState, Action, MemberInEditMode } from './store';
 import { AccessLevel, Role } from '../clients/save-access-list';
 
 export enum Actions {
+  AddMembersFromApi = 'ADD MEMBERS FROM API',
   AddMemberToEditMode = 'ADD MEMBER TO EDIT MODE',
   RemoveMemberFromEditMode = 'REMOVE MEMBER FROM EDIT MODE',
   ThereIsChangeToBeSaved = 'THERE IS CHANGE TO BE SAVED',
@@ -9,6 +10,10 @@ export enum Actions {
 }
 
 export const reducers = {
+  [Actions.AddMembersFromApi]: (state: GlobalState, { payload }: Action): GlobalState => ({
+    ...state,
+    allMembers: [...payload],
+  }),
   [Actions.AddMemberToEditMode]: (state: GlobalState, { payload }: Action): GlobalState => ({
     ...state,
     membersInEditMode: [...state.membersInEditMode, { index: payload }],

@@ -14,13 +14,15 @@ export function CreationButtons() {
   const changesAreSaved = () => dispatch({ type: Actions.ChangesAreSaved, payload: null });
 
   async function saveChanges() {
-    const changes: Partial<AccessChange>[] = membersInEditMode.map(({person_id, role, access_level}) => ({
-      person_id, 
+    const changes: Partial<AccessChange>[] = membersInEditMode.map(({ person_id, role, access_level }) => ({
+      person_id,
       role,
       access_level,
     }));
 
-    const validChanges = changes.filter(change => change.person_id && change.role && change.access_level) as AccessChange[];
+    const validChanges = changes.filter(
+      change => change.person_id && change.role && change.access_level,
+    ) as AccessChange[];
 
     try {
       await saveAccessChanges(validChanges);
