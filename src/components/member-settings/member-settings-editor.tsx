@@ -21,16 +21,20 @@ export function MemberSettingsEditor({ index }: MemberSettingsProps) {
   const { dispatch } = useContext<StoreContext>(Store);
 
   function onMemberChange({ value }: any) {
-    selectPersonId(value as string);
+    const person_id = value as string;
+    selectPersonId(person_id);
 
-    notifyAboutChanges({ index, person_id: selectedPersonId, role: selectedRole, access_level: selectedAccessLevel });
+    notifyAboutChanges({ index, person_id, role: selectedRole, access_level: selectedAccessLevel });
   }
 
   function onRoleChange({ value }: any) {
     const role = value as Role;
     selectRole(role);
+    
+    // because role change override access levels I unset the value here to be on the safe side
+    selectAccessLevel(undefined);
 
-    notifyAboutChanges({ index, person_id: selectedPersonId, role: selectedRole, access_level: selectedAccessLevel });
+    notifyAboutChanges({ index, person_id: selectedPersonId, role, access_level: undefined });
   }
 
   function onAccessLevelChange({ value }: any) {
@@ -55,7 +59,7 @@ export function MemberSettingsEditor({ index }: MemberSettingsProps) {
       <div className="col-sm p-4">
         <SelectAccessLevel roleOfCurrentUser={selectedRole} onChange={onAccessLevelChange} />
       </div>
-      <div className="col-sm-4 p-4 text-right">
+      <div className="col-sm-3 p-4 text-right">
         <CloseButton index={index} />
       </div>
     </EditorRow>

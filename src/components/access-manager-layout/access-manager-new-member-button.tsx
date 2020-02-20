@@ -16,7 +16,7 @@ export function AccessManagerNewMemberButton() {
       <EditorRow>
         <div className="col p-4">
           <button type="button" className="btn btn-link" onClick={() => addOneMoreMemberSelector(itemCounter++)}>
-            + Change one more person
+            + Change access levels of a person
           </button>
         </div>
       </EditorRow>

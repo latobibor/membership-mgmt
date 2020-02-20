@@ -49,7 +49,5 @@ function updateMemberAndReturnAllItems(
     role,
   };
 
-  console.log(copyOfArray);
-
   return copyOfArray;
 }

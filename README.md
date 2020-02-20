@@ -43,6 +43,9 @@ Since I'm travelling on Thursday I did not have time for all the features discus
 If I had the time I would have asked how the "New Member" button would work since in the memo there is only a list of members result listed 
 and a list of changes which need references to existing members (`person_id`). Therefore I would have liked to know what is the accepted payload for adding new members.
 
+#### Changes can be saved only when all fields are filled
+So incomplete rows are filtered at save, however not when the `Save Changes` button is shown.
+
 #### Save changes button should disappear if the last changed item is closed without saving
 
 #### Progressively enable controls in a row - let people save changes only when all conditions met for it
